@@ -11,16 +11,24 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/db" />
             <option value="$PROJECT_DIR$/core/designsystem" />
+            <option value="$PROJECT_DIR$/core/navigation" />
+            <option value="$PROJECT_DIR$/core/network" />
             <option value="$PROJECT_DIR$/core/widget" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/auth" />
             <option value="$PROJECT_DIR$/feature/auth/api" />
             <option value="$PROJECT_DIR$/feature/auth/impl" />
+            <option value="$PROJECT_DIR$/feature/film_details" />
+            <option value="$PROJECT_DIR$/feature/film_details/api" />
+            <option value="$PROJECT_DIR$/feature/film_details/impl" />
             <option value="$PROJECT_DIR$/feature/home" />
             <option value="$PROJECT_DIR$/feature/home/api" />
             <option value="$PROJECT_DIR$/feature/home/impl" />
             <option value="$PROJECT_DIR$/feature/profile" />
+            <option value="$PROJECT_DIR$/feature/profile/api" />
+            <option value="$PROJECT_DIR$/feature/profile/impl" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

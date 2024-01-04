@@ -1,78 +1,69 @@
 package ru.itis.filmsandroidapp.core.designsystem
 
-import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
-import ru.itis.filmsandroidapp.core.designsystem.theme.Pink40
-import ru.itis.filmsandroidapp.core.designsystem.theme.Pink80
-import ru.itis.filmsandroidapp.core.designsystem.theme.Purple40
-import ru.itis.filmsandroidapp.core.designsystem.theme.Purple80
-import ru.itis.filmsandroidapp.core.designsystem.theme.PurpleGrey40
-import ru.itis.filmsandroidapp.core.designsystem.theme.PurpleGrey80
-import ru.itis.filmsandroidapp.core.designsystem.theme.Typography
+import androidx.compose.ui.graphics.Color
+import ru.itis.filmsandroidapp.core.designsystem.theme.baseTypography
 
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Color(0xFF000000),
+    secondary = Color(0xFF12459E),
+    surfaceTint = Color(0xFF84F800),
+    tertiary = Color(0xFFFF0000),
+    surface = Color(0xFF471313),
+    error = Color(0xFFFF0048),
+    background = Color(0xFFFFC700)
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Color(0xFF000000),
+    secondary = Color(0xFF525728),
+    surfaceTint = Color(0xFFDBDDD9),
+    tertiary = Color(0xFFDFD7BE),
+    surface = Color(0xFFEEE3E3),
+    error = Color(0xFFA22525),
+    background = Color(0xFFB3A266)
 )
 
 @Composable
 fun FilmsAndroidAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+    val colorScheme =
+        if (!darkTheme) {
+            LightColorScheme
+        } else {
+            DarkColorScheme
         }
-    }
+    //вот с этим не работает, не знаю почему:
+//    val colors = when {
+//        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+//            val context = LocalContext.current
+//            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//        }
+//
+//        darkTheme -> DarkColorScheme
+//        else -> LightColorScheme
+//    }
+//    val view = LocalView.current
+//    if (!view.isInEditMode) {
+//        SideEffect {
+//            val window = (view.context as Activity).window
+//            window.statusBarColor = colors.primary.toArgb()
+//            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+//        }
+//    }
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = baseTypography,
         content = content
     )
 }

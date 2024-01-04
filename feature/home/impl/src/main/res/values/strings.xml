@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nextPage">Следующая</string>
+    <string name="backPage">Предыдущая</string>
+    <string name="films_list">Фильмы</string>
+    <string name="loading">Загрузка</string>
+</resources>

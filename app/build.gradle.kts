@@ -53,8 +53,26 @@ dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.dagger.hilt)
+    implementation(project(":feature:auth:api"))
+    implementation(project(":feature:auth:impl"))
+
+    implementation(project(":feature:home:api"))
+    implementation(project(":feature:home:impl"))
+
+    implementation(project(":feature:profile:api"))
+    implementation(project(":feature:profile:impl"))
+
+    implementation(project(":feature:film_details:api"))
+    implementation(project(":feature:film_details:impl"))
+
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:navigation"))
+
+
+    // navigation
+    implementation(libs.androidx.navigation)
+
     kapt(libs.dagger.hilt.compiler)
-    api(project(":core:designsystem"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

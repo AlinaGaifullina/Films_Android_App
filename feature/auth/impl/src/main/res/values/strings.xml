@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in"> Вход</string>
+    <string name="sign_in_btn">Войти</string>
+    <string name="username">Логин</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="password">Пароль</string>
+    <string name="or">Или</string>
+    <string name="forgot_pass">Забыли пароль?</string>
+    <string name="no_acc">Нет аккаунта?</string>
+
+    <string name="sign_up">Регистрация</string>
+    <string name="sign_up_btn">Зарегистрироваться</string>
+    <string name="repeat_pass">Повторите пароль</string>
+    <string name="have_acc">Уже есть аккаунт?</string>
+
+    <string name="sign_out">Выйти</string>
+
+    <string name="reg_fail">Ошибка регистрации</string>
+    <string name="login_fail">Ошибка авторизации</string>
+    <string name="error">Ошибка</string>
+
+</resources>

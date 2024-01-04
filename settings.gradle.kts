@@ -33,3 +33,12 @@ include(":feature:home:impl")
 
 include(":feature:profile")
 
+include(":feature:film_details")
+
+include(":core:db")
+include(":core:navigation")
+include(":feature:profile:api")
+include(":feature:profile:impl")
+include(":core:network")
+include(":feature:film_details:api")
+include(":feature:film_details:impl")
