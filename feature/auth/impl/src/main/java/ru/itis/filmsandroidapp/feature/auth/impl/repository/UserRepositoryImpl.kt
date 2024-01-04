@@ -7,7 +7,7 @@ import ru.itis.filmsandroidapp.feature.auth.impl.mapper.toUser
 import ru.itis.filmsandroidapp.feature.auth.impl.mapper.toUserCore
 import javax.inject.Inject
 
-class UserRepositoryImpl @Inject constructor(
+internal class UserRepositoryImpl @Inject constructor(
     private val db: UserDatabase,
 ): UserRepository {
 

@@ -4,7 +4,7 @@ import ru.itis.filmsandroidapp.feature.profile.api.model.ShortFilmInfoModel
 import ru.itis.filmsandroidapp.feature.profile.api.repository.UserProfileRepository
 import ru.itis.filmsandroidapp.feature.profile.api.usecase.GetFilmByFilmIdUseCase
 
-class GetFilmByFilmIdUseCaseImpl (
+internal class GetFilmByFilmIdUseCaseImpl (
     private val userProfileRepository: UserProfileRepository,
 ) : GetFilmByFilmIdUseCase {
 

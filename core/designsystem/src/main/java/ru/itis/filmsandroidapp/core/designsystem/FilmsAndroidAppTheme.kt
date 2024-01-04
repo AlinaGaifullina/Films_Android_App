@@ -10,13 +10,13 @@ import ru.itis.filmsandroidapp.core.designsystem.theme.baseTypography
 
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF000000),
-    secondary = Color(0xFF12459E),
-    surfaceTint = Color(0xFF84F800),
-    tertiary = Color(0xFFFF0000),
-    surface = Color(0xFF471313),
-    error = Color(0xFFFF0048),
-    background = Color(0xFFFFC700)
+    primary = Color(0xFF7A866B),
+    secondary = Color(0xFF547231),
+    surfaceTint = Color(0xFF2C2B27),
+    tertiary = Color(0xFF817D70),
+    surface = Color(0xFF24221B),
+    error = Color(0xFF532424),
+    background = Color(0xFF252319)
 )
 
 private val LightColorScheme = lightColorScheme(

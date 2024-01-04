@@ -7,7 +7,7 @@ import ru.itis.filmsandroidapp.feature.home.api.model.mapShortFilmResponseModel
 import ru.itis.filmsandroidapp.feature.home.api.repository.FilmsRepository
 import javax.inject.Inject
 
-class FilmsRepositoryImpl @Inject constructor(
+internal class FilmsRepositoryImpl @Inject constructor(
     private val remoteSource: FilmsApiService,
 ): FilmsRepository {
 

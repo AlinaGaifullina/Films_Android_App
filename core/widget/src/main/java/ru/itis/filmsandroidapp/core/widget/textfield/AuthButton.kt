@@ -22,8 +22,8 @@ fun AuthButton(onClick: () -> Unit, text: String, modifier: Modifier = Modifier)
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.primary
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.tertiary
         )
     }
 }

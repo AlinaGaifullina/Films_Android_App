@@ -131,7 +131,7 @@ fun HomeScreen(
                         modifier = Modifier
                             .padding(40.dp),
                         textAlign = TextAlign.Center,
-                        //style = ElixirsTextStyles.PotionDescription,
+                        style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -141,7 +141,7 @@ fun HomeScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = state.error,
+                        text = stringResource(id = R.string.default_error),
                         modifier = Modifier
                             .padding(top = 40.dp),
                         style = MaterialTheme.typography.bodyMedium,
@@ -154,7 +154,7 @@ fun HomeScreen(
                         modifier = Modifier.padding(top = 16.dp),
                     ) {
                         Text(
-                            text = "Попробовать снова",//stringResource(id = R.string.try_again),
+                            text = stringResource(id = R.string.try_again),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.error,
                         )

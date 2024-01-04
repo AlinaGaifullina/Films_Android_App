@@ -3,7 +3,7 @@ package ru.itis.filmsandroidapp.feature.auth.impl.usecase
 import ru.itis.filmsandroidapp.feature.auth.api.repository.UserRepository
 import ru.itis.filmsandroidapp.feature.auth.api.usecase.CheckUsernameUseCase
 
-class CheckUsernameUseCaseImpl (
+internal class CheckUsernameUseCaseImpl (
     private val userRepository: UserRepository,
 ) : CheckUsernameUseCase {
 

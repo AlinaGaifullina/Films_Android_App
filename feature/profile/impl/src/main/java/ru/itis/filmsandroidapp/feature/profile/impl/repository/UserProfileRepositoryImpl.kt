@@ -12,7 +12,7 @@ import ru.itis.filmsandroidapp.feature.profile.api.model.mapShortFilmInfoModel
 import ru.itis.filmsandroidapp.feature.profile.api.repository.UserProfileRepository
 import javax.inject.Inject
 
-class UserProfileRepositoryImpl @Inject constructor(
+internal class UserProfileRepositoryImpl @Inject constructor(
     private val userDb: UserDatabase,
     private val favouritesDb: FavouritesDatabase,
     private val remoteSource: FilmsApiService,

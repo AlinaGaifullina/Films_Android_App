@@ -27,7 +27,7 @@ class NetworkModule {
                     .url(modifiedUrl)
                     .get()
                     .addHeader("accept", "application/json")
-                    .addHeader("X-API-KEY", "HRVC9B8-1994S91-G8PF3KF-RW48YY2")
+                    .addHeader("X-API-KEY", "75TWRM2-G8DM2XH-J9X3JK4-YEMS66C")
                     .build()
                 chain.proceed(request)
             }

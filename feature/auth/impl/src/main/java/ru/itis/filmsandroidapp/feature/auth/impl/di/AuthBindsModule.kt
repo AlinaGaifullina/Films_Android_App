@@ -16,7 +16,7 @@ import ru.itis.filmsandroidapp.feature.auth.impl.usecase.RegisterUserUseCaseImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AuthBindsModule {
+internal abstract class AuthBindsModule {
 
     @Binds
     abstract fun bindUserRepository(impl: UserRepositoryImpl): UserRepository
@@ -26,7 +26,7 @@ abstract class AuthBindsModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-class AuthProvidesModule {
+internal class AuthProvidesModule {
     @Provides
     fun registerUserUseCase(userRepository: UserRepository): RegisterUserUseCase =
         RegisterUserUseCaseImpl(userRepository)

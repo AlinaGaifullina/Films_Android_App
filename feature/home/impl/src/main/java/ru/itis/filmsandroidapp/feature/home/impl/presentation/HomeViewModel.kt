@@ -73,6 +73,7 @@ class HomeViewModel @Inject constructor(
             HomeEvent.OnBackPageBtnClick -> onBackPageBtnClick()
             is HomeEvent.OnFilmCardClick -> onFilmCardClick(homeEvent.filmId)
             is HomeEvent.OnUsernameClick -> onUsernameClick(homeEvent.username)
+            else -> {}
         }
     }
 
@@ -180,7 +181,7 @@ class HomeViewModel @Inject constructor(
                     )
                 )
                 runCatching {
-                    getFilmsUseCase(1, 10, listOf("id", "name", "year", "poster", "shortDescription", "rating"))
+                    getFilmsUseCase(state.value.currentPage, 10, listOf("id", "name", "year", "poster", "shortDescription", "rating"))
                 }.onSuccess { films ->
                     _state.emit(
                         _state.value.copy(

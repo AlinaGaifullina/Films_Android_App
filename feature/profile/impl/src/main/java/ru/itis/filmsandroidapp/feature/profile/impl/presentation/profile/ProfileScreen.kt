@@ -14,6 +14,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -24,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,6 +33,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import ru.itis.filmsandroidapp.feature.film_details.api.navigation.FilmDetailsDestination
 import ru.itis.filmsandroidapp.feature.profile.api.model.ShortFilmInfoModel
+import ru.itis.filmsandroidapp.feature.profile.impl.R
 
 @Composable
 fun ProfileScreen(
@@ -82,7 +85,7 @@ fun ProfileScreen(
                     strokeWidth = 4.dp
                 )
                 Text(
-                    text = "Loading",
+                    text = stringResource(id = R.string.loading),
                     modifier = Modifier
                         .padding(40.dp),
                     textAlign = TextAlign.Center,
@@ -97,7 +100,7 @@ fun ProfileScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = state.error,
+                        text = stringResource(id = R.string.default_error),
                         modifier = Modifier
                             .padding(top = 40.dp),
                         style = MaterialTheme.typography.bodyMedium,
@@ -110,7 +113,7 @@ fun ProfileScreen(
                             modifier = Modifier.padding(top = 16.dp),
                         ) {
                             Text(
-                                text = "Попробовать снова",//stringResource(id = R.string.try_again),
+                                text = stringResource(id = R.string.try_again),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.error,
                             )
@@ -124,41 +127,39 @@ fun ProfileScreen(
                     Icon(
                         painterResource(ru.itis.filmsandroidapp.core.widget.R.drawable.ic_back),
                         modifier = Modifier
-                            .padding(start = 8.dp, end = 8.dp, top = 16.dp)
-                            .size(40.dp)
+                            .padding(start = 16.dp, top = 6.dp)
+                            .size(28.dp)
+                            .align(Alignment.CenterStart)
                             .clickable { eventHandler.invoke(ProfileEvent.OnBackBtnClick) },
                         contentDescription = "back",
                         tint = MaterialTheme.colorScheme.secondary
                     )
                     Text(
-                        text = "Профиль",
-                        modifier = Modifier.padding(16.dp).align(Alignment.Center),
+                        text = stringResource(id = R.string.profile),
+                        modifier = Modifier
+                            .padding(16.dp)
+                            .align(Alignment.Center),
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.secondary,
                         textAlign = TextAlign.Center
                     )
                 }
+
                 Text(
-                    text = "Логин: ${state.user.username}",
+                    text = stringResource(id = R.string.first_name) + ":  " + state.user.firstName,
                     modifier = Modifier.padding(16.dp),
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.secondary
                 )
                 Text(
-                    text = "Имя: ${state.user.firstName}",
+                    text = stringResource(id = R.string.last_name) + ":  " + state.user.lastName,
                     modifier = Modifier.padding(16.dp),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
-                )
-                Text(
-                    text = "Фамилия: ${state.user.lastName}",
-                    modifier = Modifier.padding(16.dp),
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.secondary
                 )
 
                 Text(
-                    text = "Избранное:",
+                    text = stringResource(id = R.string.favourites),
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.tertiary
@@ -192,10 +193,9 @@ fun FavouriteFilmItem(
 
             Row(
                 modifier = Modifier
-                    .padding(top = 16.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                //horizontalArrangement = Arrangement.SpaceBetween,
 
                 ) {
                 AsyncImage(
@@ -206,17 +206,17 @@ fun FavouriteFilmItem(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 16.dp)
                 ) {
                     Text(
                         text = item.filmName,
-                        modifier = Modifier,
+                        modifier = Modifier.padding(end = 16.dp),
                         style = MaterialTheme.typography.titleSmall,
                         color = MaterialTheme.colorScheme.secondary
                     )
+                    Divider(modifier = Modifier.padding(vertical = 8.dp), thickness = 2.dp, color = MaterialTheme.colorScheme.secondary )
                     Text(
                         text = item.shortDescription,
-                        modifier = Modifier,
+                        modifier = Modifier.padding(end = 16.dp),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.primary
                     )

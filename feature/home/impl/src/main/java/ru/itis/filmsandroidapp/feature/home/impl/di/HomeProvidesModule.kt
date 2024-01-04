@@ -13,7 +13,7 @@ import ru.itis.filmsandroidapp.feature.home.impl.usecase.GetFilmsUseCaseImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
-class HomeProvidesModule {
+internal class HomeProvidesModule {
 
     @Provides
     fun getFilmsUseCase(filmsRepository: FilmsRepository): GetFilmsUseCase =
@@ -23,7 +23,7 @@ class HomeProvidesModule {
 @Module
 @InstallIn(SingletonComponent::class)
 
-abstract class HomeBindsModule {
+internal abstract class HomeBindsModule {
 
     @Binds
     abstract fun bindFilmsRepository(impl: FilmsRepositoryImpl): FilmsRepository

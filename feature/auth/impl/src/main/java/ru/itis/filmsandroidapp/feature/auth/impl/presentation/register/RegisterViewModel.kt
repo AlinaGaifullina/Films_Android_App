@@ -40,8 +40,6 @@ sealed interface RegisterEvent {
     object OnRegisterButtonClick : RegisterEvent
     object OnLoginButtonCLick : RegisterEvent
     object OnPasswordVisibilityChange : RegisterEvent
-    object OnDismissRegisterRequest : RegisterEvent
-    object OnDismissErrorDialog : RegisterEvent
     data class OnUsernameChange(val value: String) : RegisterEvent
     data class OnFirstNameChange(val value: String) : RegisterEvent
     data class OnLastNameChange(val value: String) : RegisterEvent
@@ -51,7 +49,6 @@ sealed interface RegisterEvent {
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    //private val setCurrentUserUseCase: SetCurrentUserUseCase,
     private val isUsernameExist: CheckUsernameUseCase,
     private val register: RegisterUserUseCase,
     private val navigator: Navigator
@@ -65,21 +62,11 @@ class RegisterViewModel @Inject constructor(
     val action: SharedFlow<RegisterSideEffect?>
         get() = _action.asSharedFlow()
 
-//    private var currentJob: Job? = null
-//
-//    override fun onCleared() {
-//        super.onCleared()
-//        currentJob?.cancel()
-//        currentJob = null
-//    }
-
     fun event(event: RegisterEvent) {
         when (event) {
             RegisterEvent.OnRegisterButtonClick -> onRegisterButtonClick()
             RegisterEvent.OnLoginButtonCLick -> onLoginButtonClick()
             RegisterEvent.OnPasswordVisibilityChange -> onPasswordVisibilityChange()
-            RegisterEvent.OnDismissErrorDialog -> onDismissErrorDialog()
-            RegisterEvent.OnDismissRegisterRequest -> onDismissRegisterRequest()
             is RegisterEvent.OnUsernameChange -> onUsernameChange(event.value)
             is RegisterEvent.OnFirstNameChange -> onFirstNameChange(event.value)
             is RegisterEvent.OnLastNameChange -> onLastNameChange(event.value)
@@ -112,26 +99,14 @@ class RegisterViewModel @Inject constructor(
         _state.tryEmit(_state.value.copy(passwordVisible = !_state.value.passwordVisible))
     }
 
-    private fun onDismissErrorDialog() {
-        //_state.tryEmit(_state.value.copy(showErrorDialog = false))
-    }
-
-    private fun onDismissRegisterRequest() {
-        //currentJob?.cancel()
-        _state.tryEmit(_state.value.copy(showLoadingProgressBar = false))
-    }
 
     private fun onLoginButtonClick() {
-        //currentJob?.cancel()
         viewModelScope.launch {
             _action.emit(RegisterSideEffect.NavigateLogin)
         }
     }
 
     private fun onRegisterButtonClick() {
-        var loginError = ""
-       // currentJob?.cancel()
-        //currentJob =
         viewModelScope.launch {
             val errors = mutableListOf<String>()
             _state.emit(_state.value.copy(showLoadingProgressBar = true))
@@ -140,11 +115,13 @@ class RegisterViewModel @Inject constructor(
                     register(firstName, lastName, username, password)
                 }
                 else RegisterResult.FailRegister()
-            _state.emit(_state.value.copy(showLoadingProgressBar = false))
+            _state.emit(_state.value.copy(
+                showLoadingProgressBar = false,
+                errors = errors )
+            )
 
             when (result) {
                 is RegisterResult.SuccessRegister -> {
-                    //setCurrentUserUseCase(result.id)
                     _action.emit(RegisterSideEffect.NavigateHome)
                 }
 
@@ -159,7 +136,7 @@ class RegisterViewModel @Inject constructor(
 
     private fun validateFields(errors: MutableList<String>): Boolean {
         if (state.value.username.length < 3) {
-            errors.add("Имя пользователя должно состоять не менее чем из 3 символов.")
+            errors.add("Логин должен состоять не менее чем из 3 символов.")
             return false
         }
 

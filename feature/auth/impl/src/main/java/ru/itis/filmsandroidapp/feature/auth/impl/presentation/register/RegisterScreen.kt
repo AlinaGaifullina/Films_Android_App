@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -38,11 +39,6 @@ fun RegisterScreen(
     val eventHandler = viewModel::event
     val action by viewModel.action.collectAsStateWithLifecycle(null)
 
-
-//    LaunchedEffect(Unit) {
-//        //settingsEventBus.updateDarkMode(false)
-//    }
-//
     LaunchedEffect(action) {
         when (action) {
             RegisterSideEffect.NavigateHome -> viewModel.navigate(HomeDestination.createRoute(state.username))
@@ -52,13 +48,6 @@ fun RegisterScreen(
     }
 
     RegisterScreenContent(state = state, eventHandler = eventHandler)
-    //Dialogs(state = state, eventHandler = eventHandler)
-
-    /*DisposableEffect(Unit) {
-        onDispose {
-            settingsEventBus.updateDarkMode(originDarkMode)
-        }
-    }*/
 }
 
 @Composable
@@ -81,9 +70,20 @@ private fun RegisterScreenContent(state: RegisterState, eventHandler: (RegisterE
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.tertiary
             )
+
+            if(state.errors.isNotEmpty()) {
+                state.errors.forEach {
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = it,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.error,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
         }
 
-        // fields
         Column {
             AuthTextField(
                 stringResource(id = R.string.username),
@@ -119,7 +119,6 @@ private fun RegisterScreenContent(state: RegisterState, eventHandler: (RegisterE
                 { eventHandler.invoke(RegisterEvent.OnPasswordVisibilityChange) })
         }
 
-        // Buttons
         Column(
             modifier = Modifier,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -141,20 +140,3 @@ private fun RegisterScreenContent(state: RegisterState, eventHandler: (RegisterE
         }
     }
 }
-
-/*
-@Composable
-private fun Dialogs(state: RegisterState, eventHandler: (RegisterEvent) -> Unit) {
-    if (state.showLoadingProgressBar)
-        LoadingDialog(
-            stringResource(id = R.string.loading_reg),
-            onDismiss = { eventHandler.invoke(RegisterEvent.OnDismissRegisterRequest) }
-        )
-
-    if (state.showErrorDialog)
-        ErrorDialog(
-            title = stringResource(id = R.string.reg_fail),
-            errors = state.errors,
-            onDismiss = { eventHandler.invoke(RegisterEvent.OnDismissErrorDialog) }
-        )
-}*/

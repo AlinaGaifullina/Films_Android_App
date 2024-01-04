@@ -4,13 +4,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -107,11 +110,12 @@ fun FilmDetailsScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(20.dp)
+                    .padding(top = 16.dp, start = 20.dp, end = 20.dp)
 
             ) {
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Absolute.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
 
@@ -120,7 +124,7 @@ fun FilmDetailsScreen(
                         painterResource(ru.itis.filmsandroidapp.core.widget.R.drawable.ic_back),
                         modifier = Modifier
                             .padding(start = 8.dp, end = 8.dp, top = 16.dp)
-                            .size(40.dp)
+                            .size(28.dp)
                             .clickable { eventHandler.invoke(FilmDetailsEvent.OnBackBtnClick) },
                         contentDescription = "back",
                         tint = MaterialTheme.colorScheme.secondary
@@ -129,7 +133,7 @@ fun FilmDetailsScreen(
                         painterResource(ru.itis.filmsandroidapp.core.widget.R.drawable.ic_favourite),
                         modifier = Modifier
                             .padding(start = 8.dp, end = 8.dp, top = 16.dp)
-                            .size(40.dp)
+                            .size(30.dp)
                             .clickable { eventHandler.invoke(FilmDetailsEvent.OnFavouriteChange) },
                         contentDescription = "favourite",
                         tint = if (state.isFavouriteFilm)
@@ -138,14 +142,19 @@ fun FilmDetailsScreen(
                 }
 
                 Text(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(top = 22.dp, bottom = 8.dp),
                     text = state.data.filmName ?: " ",
                     style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.secondary,
+                    color = MaterialTheme.colorScheme.surface,
+                    textAlign = TextAlign.Center
                 )
 
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     AsyncImage(
@@ -153,11 +162,48 @@ fun FilmDetailsScreen(
                         model = state.data.posterInfo.posterPreviewUrl ,
                         contentDescription = "poster",
                     )
+                    Divider(modifier = Modifier.fillMaxWidth().padding(top = 20.dp), thickness = 3.dp, color = MaterialTheme.colorScheme.secondary)
+                }
+
+
+                Row (
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.rating_kp),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    Text(
+                        modifier = Modifier.padding(start = 20.dp),
+                        text = state.data.rating.ratingKp,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
+
+                Row (
+                    modifier = Modifier.padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.rating_imdb),
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                    Text(
+                        modifier = Modifier.padding(start = 20.dp),
+                        text = state.data.rating.ratingImdb,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
 
                 Text(
+                    modifier = Modifier.padding(vertical = 16.dp),
                     text = stringResource(id = R.string.description),
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.secondary
                 )
                 Text(
@@ -165,7 +211,8 @@ fun FilmDetailsScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.primary
                 )
-                Text(text = stringResource(id = R.string.genres) + " " + state.data.genres.forEach { it.genreName })
+
+                Spacer(modifier = Modifier.height(40.dp))
             }
         }
     }

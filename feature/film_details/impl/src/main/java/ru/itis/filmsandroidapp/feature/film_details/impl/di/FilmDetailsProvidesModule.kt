@@ -19,7 +19,7 @@ import ru.itis.filmsandroidapp.feature.film_details.impl.usecase.GetFilmByIdUseC
 
 @Module
 @InstallIn(SingletonComponent::class)
-class FilmDetailsProvidesModule {
+internal class FilmDetailsProvidesModule {
 
     @Provides
     fun getFilmByIdUseCase(filmDetailsRepository: FilmDetailsRepository): GetFilmByIdUseCase =
@@ -43,7 +43,7 @@ class FilmDetailsProvidesModule {
 @Module
 @InstallIn(SingletonComponent::class)
 
-abstract class FilmDetailsBindsModule {
+internal abstract class FilmDetailsBindsModule {
 
     @Binds
     abstract fun bindFilmDetailsRepository(impl: FilmDetailsRepositoryImpl): FilmDetailsRepository

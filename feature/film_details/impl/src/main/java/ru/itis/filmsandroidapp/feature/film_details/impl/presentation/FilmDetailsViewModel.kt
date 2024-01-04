@@ -86,6 +86,7 @@ class FilmDetailsViewModel @Inject constructor(
             FilmDetailsEvent.OnLaunch -> onLaunch()
             FilmDetailsEvent.OnFavouriteChange -> onFavouriteChange()
             FilmDetailsEvent.OnBackBtnClick -> onBackBtnClick()
+            else -> {}
         }
     }
 

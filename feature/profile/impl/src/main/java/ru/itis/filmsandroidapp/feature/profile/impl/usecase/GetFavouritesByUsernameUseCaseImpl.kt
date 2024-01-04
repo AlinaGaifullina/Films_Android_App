@@ -4,7 +4,7 @@ import ru.itis.filmsandroidapp.core.db.model.FavouritesCore
 import ru.itis.filmsandroidapp.feature.profile.api.repository.UserProfileRepository
 import ru.itis.filmsandroidapp.feature.profile.api.usecase.GetFavouritesByUsernameUseCase
 
-class GetFavouritesByUsernameUseCaseImpl (
+internal class GetFavouritesByUsernameUseCaseImpl (
     private val userProfileRepository: UserProfileRepository,
 ) : GetFavouritesByUsernameUseCase {
 

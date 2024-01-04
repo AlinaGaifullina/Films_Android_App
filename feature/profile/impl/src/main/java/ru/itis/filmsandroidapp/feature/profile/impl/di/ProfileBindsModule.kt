@@ -17,7 +17,7 @@ import ru.itis.filmsandroidapp.feature.profile.impl.usecase.GetUserByUsernameUse
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ProfileBindsModule {
+internal abstract class ProfileBindsModule {
 
     @Binds
     abstract fun bindUserProfileRepository(impl: UserProfileRepositoryImpl): UserProfileRepository
@@ -27,7 +27,7 @@ abstract class ProfileBindsModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ProfileProvidesModule {
+internal class ProfileProvidesModule {
 
     @Provides
     fun getFilmByFilmIdUseCase(userProfileRepository: UserProfileRepository): GetFilmByFilmIdUseCase =

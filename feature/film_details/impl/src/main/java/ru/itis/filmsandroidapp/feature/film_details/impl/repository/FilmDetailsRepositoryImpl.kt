@@ -8,7 +8,7 @@ import ru.itis.filmsandroidapp.core.network.model.mapFilmInfoEntity
 import ru.itis.filmsandroidapp.feature.film_details.api.repository.FilmDetailsRepository
 import javax.inject.Inject
 
-class FilmDetailsRepositoryImpl @Inject constructor(
+internal class FilmDetailsRepositoryImpl @Inject constructor(
     private val remoteSource: FilmsApiService,
     private val favouritesDb: FavouritesDatabase
 ): FilmDetailsRepository {

@@ -22,53 +22,53 @@ private val black = Font(R.font.montserrat_black, FontWeight.W900)
 private val filmsFontFamily =
     FontFamily(fonts = listOf(thin, extraLight, light, regular, medium, semibold, bold, extraBold, black))
 
-object FilmsTextStyles {
-
-    val TitleText = TextStyle(
-        fontFamily = filmsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 24.sp,
-    )
-
-    val SubTitles = TextStyle(
-        fontFamily = filmsFontFamily,
-        fontWeight = FontWeight.Bold,
-        fontSize = 16.sp,
-    )
-
-    val FilmDescription = TextStyle(
-        fontFamily = filmsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
-    )
-
-    val ErrorText = TextStyle(
-        fontFamily = filmsFontFamily,
-        fontWeight = FontWeight.Medium,
-        fontSize = 16.sp,
-    )
-
-    val FilmCardTitle = TextStyle(
-        fontFamily = filmsFontFamily,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
-    )
-}
-
-data class FilmsTypography(
-    val bold40: TextStyle,
-    val bold24: TextStyle,
-    val bold20: TextStyle,
-    val bold16: TextStyle,
-    val semibold20: TextStyle,
-    val semibold16: TextStyle,
-    val semibold14: TextStyle,
-    val medium16: TextStyle,
-    val medium13: TextStyle,
-    val medium12: TextStyle,
-    val regular16: TextStyle,
-    val extraBold26: TextStyle
-)
+//object FilmsTextStyles {
+//
+//    val TitleText = TextStyle(
+//        fontFamily = filmsFontFamily,
+//        fontWeight = FontWeight.Bold,
+//        fontSize = 24.sp,
+//    )
+//
+//    val SubTitles = TextStyle(
+//        fontFamily = filmsFontFamily,
+//        fontWeight = FontWeight.Bold,
+//        fontSize = 16.sp,
+//    )
+//
+//    val FilmDescription = TextStyle(
+//        fontFamily = filmsFontFamily,
+//        fontWeight = FontWeight.Medium,
+//        fontSize = 16.sp,
+//    )
+//
+//    val ErrorText = TextStyle(
+//        fontFamily = filmsFontFamily,
+//        fontWeight = FontWeight.Medium,
+//        fontSize = 16.sp,
+//    )
+//
+//    val FilmCardTitle = TextStyle(
+//        fontFamily = filmsFontFamily,
+//        fontWeight = FontWeight.SemiBold,
+//        fontSize = 16.sp,
+//    )
+//}
+//
+//data class FilmsTypography(
+//    val bold40: TextStyle,
+//    val bold24: TextStyle,
+//    val bold20: TextStyle,
+//    val bold16: TextStyle,
+//    val semibold20: TextStyle,
+//    val semibold16: TextStyle,
+//    val semibold14: TextStyle,
+//    val medium16: TextStyle,
+//    val medium13: TextStyle,
+//    val medium12: TextStyle,
+//    val regular16: TextStyle,
+//    val extraBold26: TextStyle
+//)
 
 internal val baseTypography = Typography(
     titleLarge = TextStyle(
@@ -79,12 +79,18 @@ internal val baseTypography = Typography(
     titleMedium = TextStyle(
         fontFamily = filmsFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 40.sp,
+        fontSize = 34.sp,
     ),
     titleSmall = TextStyle(
         fontFamily = filmsFontFamily,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
+    ),
+
+    bodyLarge = TextStyle(
+        fontFamily = filmsFontFamily,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
     ),
 
     bodyMedium = TextStyle(

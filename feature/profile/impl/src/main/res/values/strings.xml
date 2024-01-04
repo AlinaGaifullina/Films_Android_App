@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nextPage">Следующая</string>
-    <string name="backPage">Предыдущая</string>
-    <string name="films_list">Фильмы</string>
+    <string name="username">Логин: </string>
+    <string name="first_name">Имя: </string>
+    <string name="last_name">Фамилия: </string>
+    <string name="favourites">Избранное: </string>
+    <string name="profile">Профиль</string>
     <string name="loading">Загрузка</string>
     <string name="default_error">Возникла ошибка, проверьте подключение к Интернету</string>
     <string name="try_again">Попробовать снова</string>
