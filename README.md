@@ -1,12 +1,7 @@
-Films Android Multi-Module App
-
-Compose MVI
-
-Api: https://kinopoisk.dev/
-
-Di: Hilt
-
-Netvork: retrofit+okhttp
-
-DB: Room
-
+## Films Android Multi-Module App
+- ***Api***: https://kinopoisk.dev/
+- Compose
+- MVI
+- ***Di***: Hilt
+- ***Netvork***: retrofit+okhttp
+- ***DB***: Room
