@@ -3,5 +3,5 @@
 - Compose
 - MVI
 - ***Di***: Hilt
-- ***Netvork***: retrofit+okhttp
+- ***Network***: retrofit+okhttp
 - ***DB***: Room
